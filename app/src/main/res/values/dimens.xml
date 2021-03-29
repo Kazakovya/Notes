@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="layout_width">0dp</dimen>
+    <dimen name="textSize">30sp</dimen>
+    <dimen name="dateTextSize">20sp</dimen>
+    <dimen name="layout_marginTop">22dp</dimen>
+</resources>
