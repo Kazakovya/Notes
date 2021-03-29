@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Notes</string>
+    <string name="first_note_title">Заметка 1</string>
+    <string name="first_note_content">Текст заметки 1</string>
+    <string name="second_note_title">Заметка 2</string>
+    <string name="second_note_content">Что-то очень важное 2</string>
+    <string name="third_note_title">Заметка 3</string>
+    <string name="third_note_content">И вот это еще тоже важное 3</string>
+    <string name="note_date">Дата создания заметки</string>
+    <string name="note_title">Заголовок заметки</string>
+    <string name="note_content">Описание заметки</string>
+    <string name="menu_search">Поиск</string>
+    <string name="menu_sort">Сортировка</string>
+    <string name="menu_send">Отправить</string>
+    <string name="menu_add_photo">Добавить фото</string>
+    <string name="about">О программе</string>
+    <string name="settings">Настройки</string>
+    <string name="example">Надпись</string>
+    <string name="icon_android">Icon android</string>
+    <string name="drawer_open">Open navigation</string>
+    <string name="drawer_close">Close navigation</string>
 </resources>
