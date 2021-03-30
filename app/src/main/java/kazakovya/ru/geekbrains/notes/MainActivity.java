@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-import ru.geekbrains.notes.R;
 
 public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
 
@@ -35,14 +34,17 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         }
 
         drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.drawer_open, R.string.drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
+                drawer, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawer.addDrawerListener(toggle);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(item -> {
             if (item.getItemId() == R.id.nav_about) {
-                Snackbar.make(findViewById(R.id.drawer_layout), "О приложении", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(findViewById(R.id.drawer_layout),
+                        "О приложении", Snackbar.LENGTH_SHORT).show();
             } else {
-                Snackbar.make(findViewById(R.id.drawer_layout), "Настройки", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(findViewById(R.id.drawer_layout),
+                        "Настройки", Snackbar.LENGTH_SHORT).show();
             }
             drawer.closeDrawer(GravityCompat.START);
             return true;
@@ -72,7 +74,8 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Snackbar.make(findViewById(R.id.drawer_layout), query, Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(findViewById(R.id.drawer_layout), query,
+                        Snackbar.LENGTH_SHORT).show();
                 return true;
             }
 
@@ -86,7 +89,8 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        Snackbar.make(findViewById(R.id.drawer_layout), item.getTitle().toString(), Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(findViewById(R.id.drawer_layout),
+                item.getTitle().toString(), Snackbar.LENGTH_SHORT).show();
         return false;
     }
 

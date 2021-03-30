@@ -2,6 +2,22 @@
 <resources>
     <dimen name="layout_width">0dp</dimen>
     <dimen name="textSize">30sp</dimen>
-    <dimen name="dateTextSize">20sp</dimen>
+    <dimen name="date_textSize">20sp</dimen>
+    <dimen name="content_textSize">25sp</dimen>
     <dimen name="layout_marginTop">22dp</dimen>
+    <dimen name="margin_start_end">30dp</dimen>
+    <dimen name="margin_top">30dp</dimen>
+    <dimen name="padding_of_rv_element">10dp</dimen>
+    <dimen name="textsize_of_rv_element">25sp</dimen>
+    <dimen name="textsize_of_date_of_rv_element">20sp</dimen>
+    <dimen name="small_padding_of_rv_element">5dp</dimen>
+    <dimen name="card_corner_radius">15dp</dimen>
+    <dimen name="card_elevation">3dp</dimen>
+    <dimen name="first_textView_paddingTop">25dp</dimen>
+    <dimen name="first_textView_paddingStart">140dp</dimen>
+    <dimen name="nav_header_textSize_layout_height">180dp</dimen>
+    <dimen name="nav_header_padding">15dp</dimen>
+    <dimen name="nav_header_layout_marginBottom">12dp</dimen>
+    <dimen name="nav_header_textSize">18sp</dimen>
+    <dimen name="decorator_heith">10dp</dimen>
 </resources>

@@ -6,6 +6,18 @@
     <string name="second_note_content">Что-то очень важное 2</string>
     <string name="third_note_title">Заметка 3</string>
     <string name="third_note_content">И вот это еще тоже важное 3</string>
+    <string name="fourth_note_title">Заметка 4</string>
+    <string name="fourth_note_content">Контент заметки 4</string>
+    <string name="fifth_note_title">Заметка 5</string>
+    <string name="fifth_note_content">Контент заметки 5</string>
+    <string name="sixth_note_title">Заметка 6</string>
+    <string name="sixth_note_content">Контент заметки 6</string>
+    <string name="seventh_note_title">Заметка 7</string>
+    <string name="seventh_note_content">Контент заметки 7</string>
+    <string name="eighth_note_title">Заметка 8</string>
+    <string name="eighth_note_content">Контент заметки 8</string>
+    <string name="ninth_note_title">Заметка 9</string>
+    <string name="ninth_note_content">Контент заметки 9</string>
     <string name="note_date">Дата создания заметки</string>
     <string name="note_title">Заголовок заметки</string>
     <string name="note_content">Описание заметки</string>
@@ -19,4 +31,6 @@
     <string name="icon_android">Icon android</string>
     <string name="drawer_open">Open navigation</string>
     <string name="drawer_close">Close navigation</string>
+    <string name="item">item of RV</string>
+    <string name="date_of_item">date of item</string>
 </resources>

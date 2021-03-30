@@ -12,8 +12,6 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-import ru.geekbrains.notes.R;
-
 public class ContentFragment extends Fragment {
 
     public static final String ARG_NOTE = "note";

@@ -1,26 +1,22 @@
 package kazakovya.ru.geekbrains.notes;
 
-import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import java.text.SimpleDateFormat;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import java.util.Calendar;
-import java.util.Locale;
+import java.util.Objects;
 
-import ru.geekbrains.notes.R;
 
 public class NotesFragment extends Fragment {
 
@@ -37,49 +33,40 @@ public class NotesFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initList(view);
+        initList();
+        RecyclerView recyclerView = view.findViewById(R.id.notes_recycler_view);
+        initRecyclerView(recyclerView, notes);
     }
 
-    private void initList(View view) {
+    private void initList() {
         notes = new Note[]{
                 new Note(getString(R.string.first_note_title), getString(R.string.first_note_content), Calendar.getInstance()),
                 new Note(getString(R.string.second_note_title), getString(R.string.second_note_content), Calendar.getInstance()),
                 new Note(getString(R.string.third_note_title), getString(R.string.third_note_content), Calendar.getInstance()),
+                new Note(getString(R.string.fourth_note_title), getString(R.string.fourth_note_content), Calendar.getInstance()),
+                new Note(getString(R.string.fifth_note_title), getString(R.string.fifth_note_content), Calendar.getInstance()),
+                new Note(getString(R.string.sixth_note_title), getString(R.string.sixth_note_content), Calendar.getInstance()),
+                new Note(getString(R.string.seventh_note_title), getString(R.string.seventh_note_content), Calendar.getInstance()),
+                new Note(getString(R.string.eighth_note_title), getString(R.string.eighth_note_content), Calendar.getInstance()),
+                new Note(getString(R.string.ninth_note_title), getString(R.string.ninth_note_content), Calendar.getInstance())
         };
-
-        for (Note note : notes) {
-            Context context = getContext();
-            if (context != null) {
-                LinearLayout linearView = (LinearLayout) view;
-                TextView firstTextView = new TextView(context);
-                TextView secondTextView = new TextView(context);
-                firstTextView.setText(note.getTitle());
-                firstTextView.setTextSize(25);
-                firstTextView.setTextColor(Color.BLACK);
-                SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy", Locale.getDefault());
-                secondTextView.setText(formatter.format(note.getCreationDate().getTime()));
-                secondTextView.setTextColor(Color.BLACK);
-                secondTextView.setTextSize(25);
-                linearView.addView(firstTextView);
-                linearView.addView(secondTextView);
-                firstTextView.setPadding(0, 50, 0, 0);
-                firstTextView.setOnClickListener(v -> initCurrentNote(note));
-                secondTextView.setOnClickListener(v -> initCurrentNote(note));
-            }
-        }
     }
 
-    private void initCurrentNote(Note note) {
-        currentNote = note;
-        showNote(note);
-    }
+    private void initRecyclerView(RecyclerView recyclerView, Note[] notes) {
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        Adapter adapter = new Adapter(notes);
+        adapter.setOnItemClickListener((position, note) -> {
+            currentNote = note;
+            showNote(currentNote);
+        });
+        recyclerView.setAdapter(adapter);
+        DividerItemDecoration decoration = new DividerItemDecoration(Objects.requireNonNull(getContext()), //декоратор
+                LinearLayoutManager.VERTICAL);
+        decoration.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(getContext(), R.drawable.decorator)));
+        recyclerView.addItemDecoration(decoration);
 
-    private void showNote(Note currentNote) {
-        if (isLandscape) {
-            showLandForNotes(currentNote);
-        } else {
-            showPortForNotes(currentNote);
-        }
     }
 
     @Override
@@ -91,8 +78,8 @@ public class NotesFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        isLandscape = getResources().getConfiguration().orientation
-                == Configuration.ORIENTATION_LANDSCAPE;
+        isLandscape = getResources().getConfiguration().orientation ==
+                Configuration.ORIENTATION_LANDSCAPE;
         if (savedInstanceState != null) {
             currentNote = savedInstanceState.getParcelable(ContentFragment.ARG_NOTE);
         } else {
@@ -100,6 +87,14 @@ public class NotesFragment extends Fragment {
         }
         if (isLandscape) {
             showLandForNotes(currentNote);
+        }
+    }
+
+    private void showNote(Note currentNote) {
+        if (isLandscape) {
+            showLandForNotes(currentNote);
+        } else {
+            showPortForNotes(currentNote);
         }
     }
 
