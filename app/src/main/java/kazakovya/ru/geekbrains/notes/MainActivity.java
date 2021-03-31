@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+import ru.geekbrains.notes.R;
+
 
 public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
 
