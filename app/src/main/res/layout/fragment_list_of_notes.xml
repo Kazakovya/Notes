@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotesFragment">
+    tools:context="kazakovya.ru.geekbrains.notes.NotesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notes_recycler_view"

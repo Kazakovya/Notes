@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ContentFragment">
+    tools:context="kazakovya.ru.geekbrains.notes.ContentFragment">
 
     <TextView
         android:id="@+id/note_date_of_creation"
