@@ -13,4 +13,5 @@
         android:orderInCategory="2"
         android:title="@string/menu_edit_note"
         app:showAsAction="never"/>
+
 </menu>

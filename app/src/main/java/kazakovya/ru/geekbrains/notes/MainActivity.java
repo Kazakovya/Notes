@@ -1,18 +1,15 @@
 package kazakovya.ru.geekbrains.notes;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+
 import java.util.Objects;
-
-import ru.geekbrains.notes.R;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
     }
-
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -67,25 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        MenuItem sort = menu.findItem(R.id.menu_sort);
-        sort.setOnMenuItemClickListener(item -> {
-            Toast.makeText(MainActivity.this, R.string.menu_sort, Toast.LENGTH_SHORT).show();
-            return true;
-        });
-
-        MenuItem send = menu.findItem(R.id.menu_send);
-        send.setOnMenuItemClickListener(item -> {
-            Toast.makeText(MainActivity.this, R.string.menu_send, Toast.LENGTH_SHORT).show();
-            return true;
-        });
-
-        MenuItem addPhoto = menu.findItem(R.id.menu_add_photo);
-        addPhoto.setOnMenuItemClickListener(item -> {
-            Toast.makeText(MainActivity.this, R.string.menu_add_photo, Toast.LENGTH_SHORT).show();
-            return true;
-        });
         return true;
-
     }
 }

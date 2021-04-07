@@ -4,18 +4,11 @@
     >
     <item
         android:id="@+id/menu_search"
-        android:icon="@drawable/ic_search_black_24dp"
+        android:icon="@drawable/ic_baseline_search_24"
         android:orderInCategory="1"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         android:title="@string/menu_search"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/menu_sort"
-        android:icon="@drawable/ic_baseline_sort_24"
-        android:orderInCategory="2"
-        android:title="@string/menu_sort"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/menu_add_note"
@@ -24,17 +17,4 @@
         android:title="@string/menu_add_note"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/menu_send"
-        android:icon="@drawable/ic_baseline_share_24"
-        android:orderInCategory="1"
-        android:title="@string/menu_send"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/menu_add_photo"
-        android:icon="@drawable/ic_baseline_photo_camera_24"
-        android:orderInCategory="2"
-        android:title="@string/menu_add_photo"
-        app:showAsAction="ifRoom" />
 </menu>

@@ -4,8 +4,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import ru.geekbrains.notes.R;
-
 public class Navigation {
 
     private final FragmentManager fragmentManager;

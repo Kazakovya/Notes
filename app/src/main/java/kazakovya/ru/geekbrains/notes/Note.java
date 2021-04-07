@@ -3,15 +3,12 @@ package kazakovya.ru.geekbrains.notes;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Calendar;
-
 public class Note implements Parcelable {
 
     private String title;
     private String content;
     private String creationDate;
     private String mId;
-
 
     public static final Creator<Note> CREATOR = new Creator<Note>() {
         @Override

@@ -1,18 +1,13 @@
 package kazakovya.ru.geekbrains.notes;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
-
-import ru.geekbrains.notes.R;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
@@ -62,9 +57,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private LinearLayout itemLayout;
-        private TextView titleTextView;
-        private TextView dateTextView;
+        private final LinearLayout itemLayout;
+        private final TextView titleTextView;
+        private final TextView dateTextView;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);

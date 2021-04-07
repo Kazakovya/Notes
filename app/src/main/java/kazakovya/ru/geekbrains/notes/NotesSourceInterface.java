@@ -14,4 +14,3 @@ public interface NotesSourceInterface {
 
     void addNote(Note note);
 }
-

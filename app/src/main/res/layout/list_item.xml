@@ -30,10 +30,11 @@
             android:id="@+id/second_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="110dp"
+            android:paddingStart="@dimen/second_textView_paddingStart"
             android:paddingEnd="@dimen/padding_of_rv_element"
-            android:paddingBottom="25dp"
+            android:paddingBottom="@dimen/second_textView_paddingBottom"
             android:textSize="@dimen/textsize_of_date_of_rv_element"
             tools:text="@string/date_of_item" />
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>
