@@ -36,4 +36,8 @@
     <string name="menu_delete_note">Удалить заметку</string>
     <string name="menu_edit_note">Изменить заметку</string>
     <string name="menu_add_note">Добавить заметку</string>
+    <string name="continue_">Продолжить</string>
+    <string name="skip">Пропустить</string>
+    <string name="sign_out">Выйти</string>
+
 </resources>

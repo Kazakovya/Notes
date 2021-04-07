@@ -12,7 +12,8 @@ import java.util.Locale;
 
 import ru.geekbrains.notes.R;
 
-public class NotesSource implements Parcelable {
+public class NotesSource implements NotesSourceInterface, Parcelable {
+
     private ArrayList<Note> notes;
     private Resources resources;
 
@@ -48,7 +49,8 @@ public class NotesSource implements Parcelable {
         return 0;
     }
 
-    public NotesSource init() {
+    // public NotesSource init() {
+    public NotesSourceInterface init(NotesSourceResponse notesSourceResponse) {
         Note[] notesArray = new Note[]{
                 new Note(resources.getString(R.string.first_note_title), resources.getString(R.string.first_note_content), getDateOfCreation()),
                 new Note(resources.getString(R.string.second_note_title), resources.getString(R.string.second_note_content), getDateOfCreation()),
@@ -61,6 +63,9 @@ public class NotesSource implements Parcelable {
                 new Note(resources.getString(R.string.ninth_note_title), resources.getString(R.string.ninth_note_content), getDateOfCreation())
         };
         Collections.addAll(notes, notesArray);
+        if (notesSourceResponse != null) {
+            notesSourceResponse.initialized(this);
+        }
         return this;
     }
 

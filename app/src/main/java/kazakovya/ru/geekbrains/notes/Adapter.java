@@ -12,22 +12,22 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.SimpleDateFormat;
-import java.util.Locale;
-
 import ru.geekbrains.notes.R;
-
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     private final Fragment fragment;
     private MyClickListener myClickListener;
-    private NotesSource dataSource;
+    private NotesSourceInterface dataSource;
     private int menuPosition;
 
-    public Adapter(NotesSource dataSource, Fragment fragment) {
-        this.dataSource = dataSource;
+    public Adapter(Fragment fragment) {
         this.fragment = fragment;
+    }
+
+    public void setDataSource(NotesSourceInterface dataSource) {
+        this.dataSource = dataSource;
+        notifyDataSetChanged();
     }
 
     public int getMenuPosition() {
@@ -40,16 +40,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Adapter.ViewHolder holder, int position) {
         holder.getTitleTextView().setText(dataSource.getNote(position).getTitle());
-        holder.getDateTextView().setText((CharSequence) dataSource.getNote(position).getCreationDate());
+        holder.getDateTextView().setText(dataSource.getNote(position).getCreationDate());
     }
 
     @Override
@@ -62,14 +62,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private final CardView cardView;
         private LinearLayout itemLayout;
         private TextView titleTextView;
         private TextView dateTextView;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
-            cardView = (CardView) itemView;
             itemLayout = itemView.findViewById(R.id.element_of_recycler_view);
             titleTextView = itemView.findViewById(R.id.first_textView);
             dateTextView = itemView.findViewById(R.id.second_textView);
@@ -101,5 +99,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         public TextView getDateTextView() {
             return dateTextView;
         }
+
     }
 }

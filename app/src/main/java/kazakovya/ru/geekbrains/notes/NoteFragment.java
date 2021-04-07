@@ -19,7 +19,6 @@ import ru.geekbrains.notes.R;
 public class NoteFragment extends Fragment {
 
     public static final String CURRENT_NOTE = "currentNote";
-    public static final String CURRENT_DATA = "currentData";
     private Note note;
     private Publisher publisher;
     private TextInputEditText titleText;
@@ -102,7 +101,13 @@ public class NoteFragment extends Fragment {
         if (isNewNote) {
             isNewNote = false;
         }
-        return new Note(title, content, dateOfCreation);
+        if (note != null) {
+            Note answer = new Note(title, content, dateOfCreation);
+            answer.setId(note.getId());
+            return answer;
+        } else {
+            return new Note(title, content, dateOfCreation);
+        }
     }
 
     private void initView(View view) {

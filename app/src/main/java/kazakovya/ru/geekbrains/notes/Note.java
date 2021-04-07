@@ -10,18 +10,8 @@ public class Note implements Parcelable {
     private String title;
     private String content;
     private String creationDate;
+    private String mId;
 
-    public Note(String title, String content, String creationDate) {
-        this.title = title;
-        this.content = content;
-        this.creationDate = creationDate;
-    }
-
-    protected Note(Parcel in) {
-        title = in.readString();
-        content = in.readString();
-        creationDate = in.readString();
-    }
 
     public static final Creator<Note> CREATOR = new Creator<Note>() {
         @Override
@@ -35,16 +25,36 @@ public class Note implements Parcelable {
         }
     };
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(title);
-        dest.writeString(content);
-        dest.writeSerializable(creationDate);
+    public Note(String title, String content, String creationDate) {
+        this.title = title;
+        this.content = content;
+        this.creationDate = creationDate;
+    }
+
+    protected Note(Parcel in) {
+        title = in.readString();
+        content = in.readString();
+        creationDate = in.readString();
     }
 
     @Override
     public int describeContents() {
         return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(content);
+        dest.writeString(creationDate);
+    }
+
+    public String getId() {
+        return mId;
+    }
+
+    public void setId(String id) {
+        mId = id;
     }
 
     public String getTitle() {
@@ -58,4 +68,5 @@ public class Note implements Parcelable {
     public String getCreationDate() {
         return creationDate;
     }
+
 }
