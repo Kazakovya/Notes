@@ -9,9 +9,9 @@ public class Note implements Parcelable {
 
     private String title;
     private String content;
-    private Calendar creationDate;
+    private String creationDate;
 
-    public Note(String title, String content, Calendar creationDate) {
+    public Note(String title, String content, String creationDate) {
         this.title = title;
         this.content = content;
         this.creationDate = creationDate;
@@ -20,7 +20,7 @@ public class Note implements Parcelable {
     protected Note(Parcel in) {
         title = in.readString();
         content = in.readString();
-        creationDate = (Calendar) in.readSerializable();
+        creationDate = in.readString();
     }
 
     public static final Creator<Note> CREATOR = new Creator<Note>() {
@@ -55,7 +55,7 @@ public class Note implements Parcelable {
         return content;
     }
 
-    public Calendar getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 }

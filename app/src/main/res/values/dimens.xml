@@ -15,9 +15,12 @@
     <dimen name="card_elevation">3dp</dimen>
     <dimen name="first_textView_paddingTop">25dp</dimen>
     <dimen name="first_textView_paddingStart">140dp</dimen>
+    <dimen name="second_textView_paddingStart">110dp</dimen>
+    <dimen name="second_textView_paddingBottom">25dp</dimen>
     <dimen name="nav_header_textSize_layout_height">180dp</dimen>
     <dimen name="nav_header_padding">15dp</dimen>
     <dimen name="nav_header_layout_marginBottom">12dp</dimen>
     <dimen name="nav_header_textSize">18sp</dimen>
     <dimen name="decorator_heith">10dp</dimen>
+
 </resources>

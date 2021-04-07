@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
@@ -18,11 +19,19 @@ import ru.geekbrains.notes.R;
 
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
-    private Note[] notes;
-    private MyClickListener myClickListener;
 
-    public Adapter(Note[] notes) {
-        this.notes = notes;
+    private final Fragment fragment;
+    private MyClickListener myClickListener;
+    private NotesSource dataSource;
+    private int menuPosition;
+
+    public Adapter(NotesSource dataSource, Fragment fragment) {
+        this.dataSource = dataSource;
+        this.fragment = fragment;
+    }
+
+    public int getMenuPosition() {
+        return menuPosition;
     }
 
     public void setOnItemClickListener(MyClickListener itemClickListener) {
@@ -31,23 +40,21 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @NonNull
     @Override
-    public Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Adapter.ViewHolder holder, int position) {
-        holder.getTitleTextView().setText(notes[position].getTitle());
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy",
-                Locale.getDefault());
-        holder.getDateTextView().setText(formatter.format(notes[position].getCreationDate().getTime()));
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.getTitleTextView().setText(dataSource.getNote(position).getTitle());
+        holder.getDateTextView().setText((CharSequence) dataSource.getNote(position).getCreationDate());
     }
 
     @Override
     public int getItemCount() {
-        return notes.length;
+        return dataSource.size();
     }
 
     public interface MyClickListener {
@@ -56,22 +63,35 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private final CardView cardView;
-        private final LinearLayout itemLayout;
-        private final TextView titleTextView;
-        private final TextView dateTextView;
+        private LinearLayout itemLayout;
+        private TextView titleTextView;
+        private TextView dateTextView;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             cardView = (CardView) itemView;
             itemLayout = itemView.findViewById(R.id.element_of_recycler_view);
             titleTextView = itemView.findViewById(R.id.first_textView);
-            titleTextView.setTextColor(Color.BLACK);
             dateTextView = itemView.findViewById(R.id.second_textView);
-            dateTextView.setTextColor(Color.BLACK);
+
+            registerContextMenu(itemView);
+
             itemLayout.setOnClickListener(v -> {
                 int position = getAdapterPosition();
-                myClickListener.onItemClick(position, notes[position]);
+                myClickListener.onItemClick(position, dataSource.getNote(position));
             });
+
+            itemLayout.setOnLongClickListener(v -> {
+                menuPosition = getLayoutPosition();
+                itemView.showContextMenu();
+                return true;
+            });
+        }
+
+        private void registerContextMenu(@NonNull View itemView) {
+            if (fragment != null) {
+                fragment.registerForContextMenu(itemView);
+            }
         }
 
         public TextView getTitleTextView() {
