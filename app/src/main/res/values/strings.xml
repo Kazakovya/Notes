@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Notes</string>
+    <string name="note_date">Дата создания заметки</string>
+    <string name="note_title">Заголовок заметки</string>
+    <string name="note_content">Описание заметки</string>
+    <string name="menu_search">Поиск</string>
+    <string name="item">item of RV</string>
+    <string name="date_of_item">date of item</string>
+    <string name="menu_delete_note">Удалить заметку</string>
+    <string name="menu_edit_note">Изменить заметку</string>
+    <string name="menu_add_note">Добавить заметку</string>
+    <string name="continue_">Продолжить</string>
+    <string name="skip">Пропустить</string>
+    <string name="sign_out">Выйти</string>
+    <string name="delete_note_dialog_button_no">Нет</string>
+    <string name="confirm_delete_button">Да</string>
+    <string name="delete_ask">Вы действительно хотите удалить заметку?</string>
+
+
+
 </resources>
